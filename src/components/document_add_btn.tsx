@@ -1,4 +1,4 @@
-import { DocumentAddIcon } from '../icons/documnt_add_icon'
+import { DocumentAddIcon } from '@icons/documnt_add_icon'
 
 export const DocumentAddBtn = () => (
   <div className="break-inside-avoid card bg-base-100 shadow-md mb-8 border hover:border-blue-600 hover:shadow-blue-500 h-56 cursor-pointer">

@@ -1,8 +1,8 @@
 import { useStore } from 'effector-react'
-import { DocumentBox } from './components/DocumentBox'
-import { FmbaContainer } from './components/fmba_container'
-import { HeaderBlock } from './components/header_block'
-import { $viewMode } from './models/infomat'
+import { DocumentBox } from '@components/DocumentBox'
+import { FmbaContainer } from '@components/fmba_container'
+import { HeaderBlock } from '@components/header_block'
+import { $viewMode } from '@models/infomat'
 
 function App() {
   const mode = useStore($viewMode)

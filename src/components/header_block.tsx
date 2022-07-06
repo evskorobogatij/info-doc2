@@ -3,7 +3,7 @@ import {
   $viewMode,
   selectDocumentMode,
   selectRecordMode,
-} from '../models/infomat'
+} from '@models/infomat'
 
 export const HeaderBlock = () => {
   const mode = useStore($viewMode)
