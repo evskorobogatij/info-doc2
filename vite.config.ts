@@ -4,16 +4,21 @@ import * as path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000'
+    }
+  },
   plugins: [react()],
   resolve: {
-    alias:{
-      '@app/': `${path.resolve(__dirname,'src/app')}/`,
-      '@pages/': `${path.resolve(__dirname,'src/pages')}/`,
-      '@components/':`${path.resolve(__dirname,'src/components')}/`,
-      '@icons':`${path.resolve(__dirname,'src/icons')}/`,
-      '@models':`${path.resolve(__dirname,'src/models')}/`,
-      '@api':`${path.resolve(__dirname,'src/api')}/`
+    alias: {
+      '@app/': `${path.resolve(__dirname, 'src/app')}/`,
+      '@pages/': `${path.resolve(__dirname, 'src/pages')}/`,
+      '@components/': `${path.resolve(__dirname, 'src/components')}/`,
+      '@icons': `${path.resolve(__dirname, 'src/icons')}/`,
+      '@models': `${path.resolve(__dirname, 'src/models')}/`,
+      '@services': `${path.resolve(__dirname, 'src/services')}/`,
+      '@api': `${path.resolve(__dirname, 'src/api')}/`
     }
   }
 })
