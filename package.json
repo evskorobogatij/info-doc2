@@ -9,12 +9,12 @@
     "swagger:api": "swagger-typescript-api -p http://localhost:8000/api/spec.json -o ./src/services -t ./src/swagger_templates/modular  --modular --module-name-first-tag --single-http-client --add-readonly -r  --silent"
   },
   "dependencies": {
-    "atomic-router": "^0.5.0-dev.20",
-    "atomic-router-react": "^0.4.3",
+    "atomic-router": "^0.6.1",
+    "atomic-router-react": "^0.6.2",
     "clsx": "^1.2.0",
     "daisyui": "^2.18.0",
     "effector": "^22.3.0",
-    "effector-react": "^22.0.6",
+    "effector-react": "^22.1.6",
     "history": "^5.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
