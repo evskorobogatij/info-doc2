@@ -3,9 +3,11 @@ import { DocumentAddBtn } from './document_add_btn'
 import { useStore } from 'effector-react'
 import { $files, $loading, FileListGate } from '@models/files'
 import { LoaderSpinner } from './loader_spinner'
+import { $logged } from '@models/auth'
 export const DocumentsList = () => {
   const filesList = useStore($files)
   const loadFiles = useStore($loading)
+  const logged = useStore($logged)
   // const documentsList = [
   //   'Федеральный закон от 21 ноября 2011 г N 323 ФЗ Об основах охраны здоровья граждан',
   //   'Постановление Правительства РФ от 28 декабря 2020 г. N 2299 &quot;О Программе государственных гарантий бесплатного оказания гражданам медицинской помощи на 2021 год и на плановый период 2022 и 2023 годов&quot;',
@@ -31,7 +33,7 @@ export const DocumentsList = () => {
           {filesList.map(({ id, title }) => (
             <Card key={id} title={title} />
           ))}
-          <DocumentAddBtn />
+          {logged && <DocumentAddBtn />}          
         </div>
       )}
 
