@@ -15,7 +15,8 @@ import {
   FileInfoDto,
   FileUploadDto,
   UpdateFileDto,
-  UploadFileMetaDto
+  UploadFileMetaDto,
+  UploadFileMetaDtoWithId
 } from './data-contracts'
 import { ContentType, HttpClient, RequestParams } from './http-client'
 
@@ -133,14 +134,14 @@ export class Files<SecurityDataType = unknown> {
    * @name UploadedFilesControllerUploadFile
    * @request POST:/api/upload
    * @secure
-   * @response `200` `UploadFileMetaDto` Метаданные загруженого файла
+   * @response `200` `UploadFileMetaDtoWithId` Метаданные загруженого файла
    * @response `400` `BadUploadFileDto` Ошибка при загрузке файла
    */
 
   /* uploadedFilesControllerUploadFile */
 
   uploadFile = (data: FileUploadDto, params: RequestParams = {}) =>
-    this.http.request<UploadFileMetaDto, BadUploadFileDto>({
+    this.http.request<UploadFileMetaDtoWithId, BadUploadFileDto>({
       path: `/api/upload`,
       method: 'POST',
       body: data,

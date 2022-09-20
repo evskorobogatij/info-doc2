@@ -33,7 +33,7 @@ export const DocumentsList = () => {
           {filesList.map(({ id, title }) => (
             <Card key={id} title={title} />
           ))}
-          {logged && <DocumentAddBtn />}          
+          {logged && <DocumentAddBtn />}
         </div>
       )}
 

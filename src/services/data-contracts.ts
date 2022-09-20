@@ -142,12 +142,24 @@ export interface FileUploadDto {
   file: File
 }
 
-export interface UploadFileMetaDto {
+export interface UploadFileMetaDtoWithId {
+  /**
+   * Идентификатор загруженого файла
+   * @example pdf
+   */
+  id: string
+
   /**
    * Имя загруженого файла
    * @example ksdufydd.pdf
    */
   filename: string
+
+  /**
+   * Оригинальное имя файла
+   * @example Документ.pdf
+   */
+  original: string
 
   /**
    * Размер файла в байтах
@@ -180,4 +192,36 @@ export interface BadUploadFileDto {
    * @example Неправильный тип файла
    */
   message: string
+}
+
+export interface UploadFileMetaDto {
+  /**
+   * Имя загруженого файла
+   * @example ksdufydd.pdf
+   */
+  filename: string
+
+  /**
+   * Оригинальное имя файла
+   * @example Документ.pdf
+   */
+  original: string
+
+  /**
+   * Размер файла в байтах
+   * @example 78943
+   */
+  size: number
+
+  /**
+   * Тип файла
+   * @example application/pdf
+   */
+  mime: string
+
+  /**
+   * Расширение файла
+   * @example pdf
+   */
+  ext: string
 }
