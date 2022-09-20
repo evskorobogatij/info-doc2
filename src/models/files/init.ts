@@ -1,5 +1,12 @@
-import { forward, sample } from 'effector'
-import { $files, documentsModified, FileListGate, getFilesListFx, saveNewDocumentFx } from '.'
+import { forward } from 'effector'
+import {
+  $files,
+  documentsModified,
+  FileListGate,
+  getFilesListFx,
+  removeDocumentFx,
+  saveNewDocumentFx
+} from '.'
 
 forward({
   from: FileListGate.open,
@@ -11,9 +18,13 @@ forward({
   to: $files
 })
 
-
 forward({
   from: saveNewDocumentFx.doneData,
+  to: documentsModified
+})
+
+forward({
+  from: removeDocumentFx.doneData,
   to: documentsModified
 })
 

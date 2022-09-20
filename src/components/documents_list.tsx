@@ -31,7 +31,7 @@ export const DocumentsList = () => {
       ) : (
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 mx-40 flex-1 gap-8 before:box-inherit after:box-inherit">
           {filesList.map(({ id, title }) => (
-            <Card key={id} title={title} />
+            <Card key={id} id={id} title={title} />
           ))}
           {logged && <DocumentAddBtn />}
         </div>

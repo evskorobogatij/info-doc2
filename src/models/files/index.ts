@@ -15,6 +15,15 @@ export const getFilesListFx = createEffect(async () => {
   }
 })
 
+export const removeDocumentFx = createEffect(async (uid: string)=>{
+  const res = await filesApi.remove(uid)
+  if(res.ok){
+    return res.data
+  } else {
+    throw new Error('Ошибка при удалении документа')
+  }
+})
+
 export const saveNewDocumentFx = createEffect(
   async ({ title, uploadedFileId }: CreateFileDto) => {
     const res = await filesApi.create({ title, uploadedFileId })
