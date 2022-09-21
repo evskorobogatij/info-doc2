@@ -33,6 +33,7 @@ export const DocumentDialogContent = ({
   const { id: docId } = useStore($document)
 
   const [dragFileOver, setDragFileOver] = useState(false)
+  const [fileInFocus, setFileInFocus] = useState(false)
 
   const fileHandler = useRef<HTMLInputElement>(null)
 
@@ -95,6 +96,7 @@ export const DocumentDialogContent = ({
         <div
           className={clsx(
             'mb-4 h-40 border border-gray-300 rounded-lg  flex justify-center  items-center cursor-pointer relative',
+            fileInFocus && 'ring-2 ring-offset-1 ring-blue-600',
             dragFileOver ? 'bg-gray-400' : 'bg-gray-50'
           )}
           onClick={clickOnFileZoneHandler}
@@ -134,6 +136,8 @@ export const DocumentDialogContent = ({
             onDragOver={() => setDragFileOver(true)}
             onDragLeave={() => setDragFileOver(false)}
             onDrop={() => setDragFileOver(false)}
+            onBlur={() => setFileInFocus(false)}
+            onFocus={() => setFileInFocus(true)}
             disabled={fileUploading}
             accept={'application/pdf'}
             className={
