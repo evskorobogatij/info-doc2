@@ -1,5 +1,4 @@
 import {
-  $authError,
   $isAuthChecking,
   $isLoginError,
   $logged,

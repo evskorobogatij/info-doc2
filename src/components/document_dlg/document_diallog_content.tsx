@@ -5,7 +5,6 @@ import {
   $documentTitle,
   $fileUploading,
   $filledDocument,
-  $uploadedFile,
   $uploadedMetadata,
   DocumentGate,
   setDocumentTitle,

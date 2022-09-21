@@ -1,7 +1,7 @@
 import { client } from '@services/client'
 import { UploadFileMetaDtoWithId } from '@services/data-contracts'
 import { Files } from '@services/Files'
-import { createEffect, createEvent, createStore, restore } from 'effector'
+import { createEffect, createEvent, createStore } from 'effector'
 import { createGate } from 'effector-react'
 
 export interface DocumentProps {
