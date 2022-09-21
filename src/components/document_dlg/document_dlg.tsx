@@ -4,12 +4,12 @@ import { useCallback, useState } from 'react'
 import { DocumentDialogContent } from './document_diallog_content'
 
 interface DocumentDlgProps {
-  dialogId?: string
+  documentUid?: string|null
 }
 
 
 export const useDocumentDlg = ({
-  dialogId = 'document_dlg'
+  documentUid = null
 }: DocumentDlgProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const open = () => {
@@ -29,7 +29,6 @@ export const useDocumentDlg = ({
               'modal',
               isOpen && 'visible opacity-100 pointer-events-auto'
             )}
-            id={dialogId}
           >
             <div className="modal-box relative scale-100">
               <label
@@ -39,13 +38,13 @@ export const useDocumentDlg = ({
                 <CloseIcon />
               </label>
               
-              <DocumentDialogContent />
+              <DocumentDialogContent fileUid={documentUid} />
             </div>
           </div>
         )}
       </>
     ),
-    [close, dialogId, isOpen]
+    [close, documentUid, isOpen]
   )
 
   return {

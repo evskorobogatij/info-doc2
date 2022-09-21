@@ -11,13 +11,19 @@ import {
   setDocumentTitle,
   setUploadFile
 } from '@models/document'
-import { saveNewDocumentFx } from '@models/files'
+import { saveEditedDocumentFx, saveNewDocumentFx } from '@models/files'
 import clsx from 'clsx'
 import { useGate, useStore } from 'effector-react'
 import { ChangeEvent, useRef, useState } from 'react'
 import { UploadDocIndicator } from './upload_doc_incicator'
 
-export const DocumentDialogContent = () => {
+interface DocumentDialogContentProps {
+  fileUid?: string | null
+}
+
+export const DocumentDialogContent = ({
+  fileUid = null
+}: DocumentDialogContentProps) => {
   // const [title, setTilte] = useState('')
   const title = useStore($documentTitle)
   const fileUploading = useStore($fileUploading)
@@ -47,11 +53,17 @@ export const DocumentDialogContent = () => {
   }
 
   const saveDocumentsHandle = () => {
-    if (uploadedMetadata?.id)
+    if (uploadedMetadata?.id && !fileUid)
       saveNewDocumentFx({ title, uploadedFileId: uploadedMetadata.id })
+    if (uploadedMetadata?.id && fileUid && docId)
+      saveEditedDocumentFx({
+        id: docId,
+        title,
+        uploadedFileId: uploadedMetadata.id
+      })
   }
 
-  useGate(DocumentGate, null)
+  useGate(DocumentGate, fileUid)
 
   return (
     <>
@@ -88,7 +100,7 @@ export const DocumentDialogContent = () => {
           )}
           onClick={clickOnFileZoneHandler}
         >
-          {uploadedFile === null && (
+          {uploadedMetadata === null && !fileUploading && (
             <div className="flex flex-col items-center gap-2">
               <UploadIcon />
               <div className="text-sm">

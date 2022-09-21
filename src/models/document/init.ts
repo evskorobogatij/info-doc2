@@ -1,5 +1,4 @@
 import { forward, sample } from 'effector'
-import { title } from 'process'
 import {
   $document,
   $documentTitle,
@@ -10,6 +9,9 @@ import {
   clearUploadedFile,
   DocumentGate,
   DocumentProps,
+  editDocument,
+  getDocumentInfoFx,
+  getUploadedFileMetadataFx,
   newDocument,
   setDocumentTitle,
   setUploadFile,
@@ -94,3 +96,42 @@ sample({
   filter: (data) => data === null,
   target: newDocument
 })
+
+sample({
+  clock: DocumentGate.open,
+  filter: (data) => data !== null,
+  fn: (data) => data ?? '',
+  target: editDocument
+})
+
+forward({
+  from: editDocument,
+  to: getDocumentInfoFx
+})
+
+sample({
+  clock: getDocumentInfoFx.doneData,
+  fn: ({ id, file, title }): DocumentProps => ({
+    id,
+    title,
+    uploadedFileId: file
+  }),
+  target: $document
+})
+
+sample({
+  clock: getDocumentInfoFx.doneData,
+  fn: ({ file }) => file,
+  target: getUploadedFileMetadataFx
+})
+
+sample({
+  clock: getUploadedFileMetadataFx.doneData,
+  target: $uploadedMetadata
+})
+
+$document.watch((state) => console.log('Document ', state))
+
+$uploadedMetadata.watch((state) =>
+  console.log('Uploaded metadata file info', state)
+)

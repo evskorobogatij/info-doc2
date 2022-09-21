@@ -5,6 +5,7 @@ import {
   FileListGate,
   getFilesListFx,
   removeDocumentFx,
+  saveEditedDocumentFx,
   saveNewDocumentFx
 } from '.'
 
@@ -25,6 +26,11 @@ forward({
 
 forward({
   from: removeDocumentFx.doneData,
+  to: documentsModified
+})
+
+forward({
+  from: saveEditedDocumentFx.doneData,
   to: documentsModified
 })
 

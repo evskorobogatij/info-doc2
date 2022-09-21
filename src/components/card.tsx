@@ -1,6 +1,8 @@
+import { DocumentEditIcon } from '@icons/document_edit_icon'
 import { TrashIcon } from '@icons/trash_icon'
 import { $logged } from '@models/auth'
 import { useStore } from 'effector-react'
+import { useDocumentDlg } from './document_dlg'
 import { useRemoveDlg } from './remove_dlg'
 
 interface CardProps {
@@ -11,6 +13,7 @@ interface CardProps {
 export const Card = ({ id, title }: CardProps) => {
   const logged = useStore($logged)
 
+  const { Dialog: EditDocumentDlg, open: openDocumentDlg } = useDocumentDlg({ documentUid: id })
   const { Dialog: RemoveDialog, open: openRemoveDialog } = useRemoveDlg({
     id,
     title
@@ -34,6 +37,11 @@ export const Card = ({ id, title }: CardProps) => {
                   onClick={removeHandle}
                 >
                   <TrashIcon />
+                </button>
+
+                <EditDocumentDlg />
+                <button className="btn btn-circle btn-ghost hover:text-blue-600 hover:bg-blue-100" onClick={openDocumentDlg}>
+                  <DocumentEditIcon />
                 </button>
               </>
             )}

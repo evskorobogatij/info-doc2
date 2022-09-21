@@ -2,7 +2,7 @@ import { DocumentAddIcon } from '@icons/documnt_add_icon'
 import { useDocumentDlg } from './document_dlg'
 
 export const DocumentAddBtn = () => {
-  const { Dialog, open } = useDocumentDlg({ dialogId: 'document_dlg' })
+  const { Dialog, open } = useDocumentDlg({})
   const handleNewDocument = () => {
     open()
   }

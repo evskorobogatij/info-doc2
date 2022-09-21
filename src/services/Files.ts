@@ -171,6 +171,26 @@ export class Files<SecurityDataType = unknown> {
       ...params
     })
   /**
+   * @description Получение метаданных загруженого файла
+   *
+   * @tags files
+   * @name UploadedFilesControllerUploadedMetadata
+   * @request GET:/api/upload/{id}
+   * @secure
+   * @response `200` `UploadFileMetaDtoWithId` Метаданные загруженого файла
+   */
+
+  /* uploadedFilesControllerUploadedMetadata */
+
+  uploadedMetadata = (id: string, params: RequestParams = {}) =>
+    this.http.request<UploadFileMetaDtoWithId, any>({
+      path: `/api/upload/${id}`,
+      method: 'GET',
+      secure: true,
+      format: 'json',
+      ...params
+    })
+  /**
    * @description Возвращает файл с сервера
    *
    * @tags files
