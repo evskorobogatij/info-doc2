@@ -33,7 +33,7 @@ export const Card = ({ id, title }: CardProps) => {
               <>
                 <RemoveDialog />
                 <button
-                  className="btn btn-circle btn-ghost hover:text-blue-600 hover:bg-blue-100"
+                  className="btn btn-circle btn-ghost hover:text-red-600 hover:bg-red-100"
                   onClick={removeHandle}
                 >
                   <TrashIcon />
