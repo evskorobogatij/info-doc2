@@ -27,7 +27,6 @@ export const DocumentDialogContent = ({
   // const [title, setTilte] = useState('')
   const title = useStore($documentTitle)
   const fileUploading = useStore($fileUploading)
-  const uploadedFile = useStore($uploadedFile)
   const uploadedMetadata = useStore($uploadedMetadata)
 
   const filledDocument = useStore($filledDocument)
@@ -46,8 +45,9 @@ export const DocumentDialogContent = ({
     const { files } = e.target
     if (files && files.length > 0) {
       const file = files.item(0)
+
       if (file) {
-        setUploadFile(file)
+        if (file.type === 'application/pdf') setUploadFile(file)
       }
     }
   }
@@ -136,6 +136,7 @@ export const DocumentDialogContent = ({
             onDragLeave={() => setDragFileOver(false)}
             onDrop={() => setDragFileOver(false)}
             disabled={fileUploading}
+            accept={'application/pdf'}
             className={
               'left-0 right-0 top-0 bottom-0 absolute opacity-0 w-full'
             }
