@@ -1,3 +1,4 @@
+import { DocViewPage } from '@pages/doc_view'
 import { HomePage } from '@pages/home'
 import { InfomatPage } from '@pages/infomat'
 import { InfomatsPage } from '@pages/infomats'
@@ -12,6 +13,7 @@ export const App = () => (
     <Route route={InfomatPage.route} view={InfomatPage.Infomat} />    
     <Route route={LoginPage.route} view={LoginPage.Login} />
     <Route route={SettingsPage.route} view={SettingsPage.Page} />
+    <Route route={DocViewPage.route} view={DocViewPage.Page} />
     <Route route={HomePage.route} view={HomePage.Page} />
   </RouterProvider>
 )
