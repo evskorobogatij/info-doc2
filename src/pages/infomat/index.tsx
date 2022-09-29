@@ -23,24 +23,29 @@ const Infomat = () => {
   const isOnline = useStore($isOnline)
 
   return (
-    <div className="w-screen h-screen flex flex-col">
-      {isOnline ? (
-        <>
-          <HeaderBlock />
-          {mode === 'documents' ? (
-            <DocumentBox />
-          ) : (
-            <FmbaContainer infomat={infomat} />
-          )}
-        </>
-      ) : (
-        <>
-          <div className="flex w-screen h-screen justify-center items-center bg-blue-600">
-            <div className="text-5xl text-white font-bold uppercase">Нет сети</div>
-          </div>
-        </>
-      )}
-    </div>
+    <>
+    
+      <div className="w-screen h-screen flex flex-col overflow-hidden">
+        {isOnline ? (
+          <>
+            <HeaderBlock />
+            {mode === 'documents' ? (
+              <DocumentBox />
+            ) : (
+              <FmbaContainer infomat={infomat} />
+            )}
+          </>
+        ) : (
+          <>
+            <div className="flex w-screen h-screen justify-center items-center bg-blue-600">
+              <div className="text-5xl text-white font-bold uppercase">
+                Нет сети
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   )
 }
 

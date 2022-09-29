@@ -8,7 +8,7 @@ interface FmbaContainerProps {
 export const FmbaContainer = ({ infomat }: FmbaContainerProps) => {
   const [loading, setLoading] = useState(true)
   return (
-    <div className="flex-1 flex justify-center items-center">
+    <div className="flex-1 flex justify-center items-center overflow-hidden">
       <iframe
         onLoad={() => setLoading(false)}
         seamless

@@ -25,11 +25,11 @@ export const DocumentsList = () => {
   return (
     <>
       {loadFiles ? (
-        <div className="absolute left-0 right-0 top-0 bottom-0 flex justify-center items-center">
+        <div className="absolute left-0 right-0 top-0 bottom-0 flex justify-center items-center overflow-hidden">
           <LoaderSpinner />
         </div>
       ) : (
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 mx-40 flex-1 gap-8 before:box-inherit after:box-inherit">
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 mx-40 flex-1 gap-8 before:box-inherit after:box-inherit overflow-hidden">
           {filesList.map(({ id, title, file }) => (
             <Card key={id} id={id} title={title} fileId={file} />
           ))}
