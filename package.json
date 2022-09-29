@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8000",
     "swagger:api": "swagger-typescript-api -p http://localhost:8000/api/spec.json -o ./src/services -t ./src/swagger_templates/modular  --modular --module-name-first-tag --single-http-client --add-readonly -r  --silent"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
@@ -9,8 +9,18 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:8000'
     }
+  },  
+  base: '/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks : {
+          react_pdf_viewer: ['@react-pdf-viewer/core']
+        }
+      }
+    }
   },
-  plugins: [react()],
+  plugins: [react(), splitVendorChunkPlugin()],
   resolve: {
     alias: {
       '@app/': `${path.resolve(__dirname, 'src/app')}/`,
