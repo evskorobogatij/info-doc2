@@ -2,33 +2,34 @@ import { useStore } from 'effector-react'
 import {
   $viewMode,
   selectDocumentMode,
-  selectRecordMode,
+  selectRecordMode
 } from '@models/infomat'
+import clsx from 'clsx'
 
 export const HeaderBlock = () => {
   const mode = useStore($viewMode)
   return (
-    <div className="absolute top-0 flex justify-center bg-transparent w-screen gap-4 z-50">
+    <div className="absolute right-0 flex flex-col justify-center items-end bg-transparent h-screen gap-4 z-50 w-36">
       {/* <div className="flex gap-4 bg-white rounded-b-lg h-full p-2">
         <button className="btn btn-primary btn-sm">Запись к врачу</button>
         <button className="btn btn-ghost btn-sm">Документы</button>
       </div> */}
       <div
-        className={
-          mode === 'record'
-            ? 'btn btn-primary rounded-b-lg rounded-t-none'
-            : 'btn btn-outline btn-ghost bg-white rounded-b-lg rounded-t-none'
-        }
+        className={clsx(
+          'btn rounded-l-lg rounded-r-none w-36',
+          mode === 'record' ? 'btn-primary ' : 'btn-outline btn-ghost bg-white'
+        )}
         onClick={() => selectRecordMode()}
       >
         Запись к врачу
       </div>
       <div
-        className={
+        className={clsx(
+          'btn rounded-l-lg rounded-r-none w-36',
           mode === 'documents'
-            ? 'btn btn-primary rounded-b-lg rounded-t-none'
-            : 'btn btn-outline btn-ghost bg-white rounded-b-lg rounded-t-none'
-        }
+            ? 'btn-primary '
+            : 'btn-outline btn-ghost bg-white'
+        )}
         onClick={() => selectDocumentMode()}
       >
         Документы
