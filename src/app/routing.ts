@@ -1,3 +1,4 @@
+import { DocListViewPage } from '@pages/doclist'
 import { DocViewPage } from '@pages/doc_view'
 import { HomePage } from '@pages/home'
 import { InfomatPage } from '@pages/infomat'
@@ -13,6 +14,7 @@ export const routes = [
   { path: '/infomat/:infomat', route: InfomatPage.route },
   { path: '/document/:fileid', route: DocViewPage.route },
   { path: '/settings', route: SettingsPage.route },
+  { path: '/doc', route: DocListViewPage.route },
   { path: '/', route: HomePage.route }
 ]
 

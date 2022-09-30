@@ -1,4 +1,5 @@
 import { goOffline, goOnline } from '@models/sys'
+import { DocListViewPage } from '@pages/doclist'
 import { DocViewPage } from '@pages/doc_view'
 import { HomePage } from '@pages/home'
 import { InfomatPage } from '@pages/infomat'
@@ -38,6 +39,10 @@ export const App = () => {
         <Route route={LoginPage.route} view={LoginPage.Login} />
         <Route route={SettingsPage.route} view={SettingsPage.Page} />
         <Route route={DocViewPage.route} view={DocViewPage.Page} />
+        <Route
+          route={DocListViewPage.route}
+          view={DocListViewPage.DocListView}
+        />
         <Route route={HomePage.route} view={HomePage.Page} />
       </RouterProvider>
     </>
