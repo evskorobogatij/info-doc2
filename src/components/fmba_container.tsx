@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 interface FmbaContainerProps {
-  infomat: number;
+  infomat: number
 }
 
 export const FmbaContainer = ({ infomat }: FmbaContainerProps) => {
@@ -11,7 +11,7 @@ export const FmbaContainer = ({ infomat }: FmbaContainerProps) => {
     <div className="flex-1 flex justify-center items-center overflow-hidden">
       <iframe
         onLoad={() => setLoading(false)}
-        seamless
+        sandbox={'allow-scripts'}
         src={`https://reg.fmba.gov.ru/infomt/${infomat}`}
         className={clsx('h-full w-full ', loading && 'hidden')}
       />
