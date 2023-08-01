@@ -122,7 +122,7 @@ const Page = () => {
             </GoToLastPage>
           </div>
         </div>
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js">
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.5.207/es5/build/pdf.worker.js">
           <div className="absolute top-16 left-2 right-2 bottom-2 border-2 border-blue-500">
             <Viewer
               fileUrl={`/api/documents/${fileName}`}
