@@ -1,5 +1,6 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import legacy from '@vitejs/plugin-legacy'
 import * as path from 'path'
 
 // https://vitejs.dev/config/
@@ -9,18 +10,27 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:8000'
     }
-  },  
+  },
   base: '/',
   build: {
+    target: 'chrome50',
     rollupOptions: {
       output: {
-        manualChunks : {
+        manualChunks: {
           react_pdf_viewer: ['@react-pdf-viewer/core']
         }
       }
     }
   },
-  plugins: [react(), splitVendorChunkPlugin()],
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    legacy({
+      targets: ['Chrome >= 49'],
+      polyfills: ['es.promise.finally', 'es/map', 'es/set'],
+      modernPolyfills: ['es.promise.finally']
+    })
+  ],
   resolve: {
     alias: {
       '@app/': `${path.resolve(__dirname, 'src/app')}/`,
